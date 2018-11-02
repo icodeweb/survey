@@ -31,8 +31,8 @@ if(isset($_POST['btn_submit']))
 			{
 				if($option)
 				{
-					$insertOptionQuery = " UPDATE `survey`.`question_options` SET `option` = '$option' WHERE id = '$optionId' ";
-					mysqli_query($connection, $insertOptionQuery);
+					$updteOptionQuery = " UPDATE `survey`.`question_options` SET `option` = '$option' WHERE id = '$optionId' ";
+					mysqli_query($connection, $updteOptionQuery);
 				}
 			}
 		}
@@ -80,7 +80,7 @@ $select_query = " SELECT *,
 								`questions`.id as questionId
 								FROM `questions` 
 								LEFT JOIN `question_options` on `questions`.`id` = `question_options`.`question_id` 
-								ORDER BY `questions`.id asc";
+								ORDER BY `questions`.id asc, `question_options`.`id` asc ";
 
 $questions = mysqli_query($connection, $select_query);
 
